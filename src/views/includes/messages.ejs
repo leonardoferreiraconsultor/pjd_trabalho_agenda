@@ -1,0 +1,21 @@
+<% if(erros.length > 0) { %>
+<div id="mensagem" class="linha">
+    <div class="coluna">
+        <ul class="alerta alert-danger">
+            <% erros.forEach($erro => { %>
+                <li><%= $erro %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<% } else if(sucesso.length > 0) { %>
+<div id="mensagem" class="linha">
+    <div class="coluna">
+        <ul class="alert alert-success">
+            <% sucesso.forEach($sucesso => { %>
+                <li><%= $sucesso %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<% } %>

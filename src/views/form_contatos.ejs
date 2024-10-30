@@ -1,0 +1,47 @@
+<%- include('includes/header')  %>
+
+    <%- include('includes/navbar')  %>
+
+    <main class="container">
+        <div class="linha">
+            <div class="coluna">
+                <h1>Novo Contato</h1>
+                <%- include('includes/messages')  %>
+
+                <fieldset>
+                    <legend>Cadastrar no sistema</legend>
+                    <form method="POST" action="/contatos/<%= (!contato.id) ? 'cadastrar' : 'editar' %>">
+                        <div>
+                            <label for="nome">Nome:</label>
+                            <input type="text" name="nome" id="nome" value="<%= contato.nome %>">
+                        </div>
+                        <div>
+                            <label for="sobrenome">Sobrenome:</label>
+                            <input type="text" name="sobrenome" id="sobrenome" value="<%= contato.sobrenome %>">
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="text" name="email" id="email" value="<%= contato.email %>">
+                        </div>
+                        <div>
+                            <label for="telefone">Telefone:</label>
+                            <input type="text" name="telefone" id="telefone" value="<%= contato.telefone %>">
+                        </div>
+                        <div>
+                            <label for="data_de_nascimento">Data de Nascimento:</label>
+                            <input type="text" name="data_de_nascimento" id="data_de_nascimento" value="<%= contato.data_de_nascimento %>">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" type="submit" name="enviar" id="enviar">Enviar</button>
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= CSRFToken %>">
+                        <% if(contato.id) { %>
+                        <input type="hidden" name="id" value="<%= contato.id %>">
+                        <% } %>
+                    </form>
+                </fieldset>
+            </div>
+        </div>        
+    </div>
+        
+<%- include('includes/footer')  %>  

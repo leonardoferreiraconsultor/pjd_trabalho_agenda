@@ -1,0 +1,20 @@
+:root {
+  --primary-color: white;
+  --primary-color-darker: gray;
+}
+
+body {
+  background: var(--primary-color-darker);
+}
+
+main.container {
+  background: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+}
+
+#mensagem ul {
+  list-style-type: none;
+}

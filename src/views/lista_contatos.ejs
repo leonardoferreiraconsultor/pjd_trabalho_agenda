@@ -1,0 +1,47 @@
+<%- include('includes/header')  %>
+
+    <%- include('includes/navbar')  %>
+
+    <main class="container">
+        <div class="linha">
+            <div class="coluna">
+                <%- include('includes/messages')  %>
+
+                <table id="lista_contatos" class="table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>E-mail</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%# Caso a tabela esteja vazia, mostra mensagem para o usuário %>
+                        <% if(contatos.length === 0) {  %>
+                        <tr>
+                            <td colspan="3">Nenhum contato cadastrado</td>
+                        </tr>
+                        <% } %>
+                        <% contatos.forEach((contato) => {  %>
+                        <tr>
+                            <td><%= `${contato.nome} ${contato.sobrenome}` %></td>
+                            <td><%= contato.telefone %></td>
+                            <td><%= contato.email %></td>
+                            <td>
+                                <a href="/contatos/edicao/<%= contato._id %>">Editar</a>
+                                <form class="form_excluir" class="excluir_contato" action="/contatos/excluir" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= CSRFToken %>">
+                                    <input type="hidden" name="id" value="<%= contato._id %>">
+                                    <button>Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+<%- include('includes/footer')  %>

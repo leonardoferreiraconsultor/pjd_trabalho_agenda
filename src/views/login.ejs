@@ -1,0 +1,32 @@
+<%- include('includes/header')  %>
+
+    <%- include('includes/navbar')  %>
+
+    <main class="container">
+        <div class="linha">
+            <div class="coluna">
+                <h1>Login</h1>
+                <%- include('includes/messages')  %>
+
+                <fieldset>
+                    <legend>Entrar no sistema</legend>
+                    <form method="POST" action="/logar">
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input type="text" name="email" id="email">
+                        </div>
+                        <div>
+                            <label for="senha">Senha:</label>
+                            <input type="password" name="senha" id="senha">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" type="submit" name="enviar" id="enviar">Enviar</button>
+                        </div>
+                        <input type="hidden" name="_csrf" value="<%= CSRFToken %>">
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+        
+<%- include('includes/footer')  %>
